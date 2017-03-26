@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="ColorPickerView">
+        <attr name="radius" format="integer" />
+        <attr name="brushWidth" format="integer" />
+        <attr name="centerRadius" format="integer" />
+    </declare-styleable>
+</resources>
