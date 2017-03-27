@@ -9,9 +9,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
-import android.graphics.drawable.Drawable;
-import android.os.Debug;
-import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -25,6 +22,8 @@ public class ColorPickerView extends View {
     private final int[] mColors;
     private OnColorChangedListener mListener;
     private int mRadius;
+    private float mInnerRelativeRadius;
+    private float mOuterRelativeRadius;
     private int mBrushWidth;
     private int mCenterRadius;
 
@@ -38,9 +37,8 @@ public class ColorPickerView extends View {
                 0, 0);
 
         try {
-            mRadius = a.getInt(R.styleable.ColorPickerView_radius, 100);
-            mBrushWidth = a.getInt(R.styleable.ColorPickerView_brushWidth, 32);
-            mCenterRadius = a.getInt(R.styleable.ColorPickerView_centerRadius, 32);
+            mInnerRelativeRadius = a.getFloat(R.styleable.ColorPickerView_innerRelativeRadius, 0.2f);
+            mOuterRelativeRadius = a.getFloat(R.styleable.ColorPickerView_outerRelativeRadius, 0.35f);
         } finally {
             a.recycle();
         }
@@ -101,8 +99,20 @@ public class ColorPickerView extends View {
         }
     }
     @Override
+   public  void onSizeChanged (int w,
+                        int h,
+                        int oldw,
+                        int oldh){
+        mRadius = (w < h ? w : h)/2;
+        mBrushWidth = (int) (mOuterRelativeRadius*mRadius);
+        mCenterRadius = (int)(mInnerRelativeRadius*mRadius);
+        mPaint.setStrokeWidth(mBrushWidth);
+        mCenterPaint.setStrokeWidth(mCenterRadius);
+    }
+    @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(mRadius*2, mRadius*2);
+        int tmpMeasure = widthMeasureSpec < heightMeasureSpec ? widthMeasureSpec : heightMeasureSpec;
+        setMeasuredDimension(tmpMeasure, tmpMeasure);
     }
 
 

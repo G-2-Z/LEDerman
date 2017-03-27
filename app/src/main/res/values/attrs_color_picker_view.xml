@@ -1,7 +1,6 @@
 <resources>
     <declare-styleable name="ColorPickerView">
-        <attr name="radius" format="integer" />
-        <attr name="brushWidth" format="integer" />
-        <attr name="centerRadius" format="integer" />
+        <attr name="innerRelativeRadius" format="float" />
+        <attr name="outerRelativeRadius" format="float" />
     </declare-styleable>
 </resources>
