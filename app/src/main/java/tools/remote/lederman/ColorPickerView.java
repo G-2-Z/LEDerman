@@ -43,14 +43,6 @@ public class ColorPickerView extends View {
             a.recycle();
         }
 
-
-
-        mListener = new OnColorChangedListener() {
-            @Override
-            public void colorChanged(int color) {
-                Log.d("colorchanged:",""+color);
-            }
-        };
         mColors = new int[] {
                 0xFFFF0000, 0xFFFF00FF, 0xFF0000FF, 0xFF00FFFF, 0xFF00FF00,
                 0xFFFFFF00, 0xFFFF0000
@@ -68,7 +60,9 @@ public class ColorPickerView extends View {
     }
 
 
-
+    public void setOnColorChangedListener(OnColorChangedListener listener) {
+        this.mListener = listener;
+    }
     private boolean mTrackingCenter;
     private boolean mHighlightCenter;
 
@@ -191,7 +185,7 @@ public class ColorPickerView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                mTrackingCenter = inCenter;
+                //mTrackingCenter = inCenter;
                 if (inCenter) {
                     mHighlightCenter = true;
                     invalidate();
@@ -212,16 +206,19 @@ public class ColorPickerView extends View {
                     }
                     mCenterPaint.setColor(interpColor(mColors, unit));
                     invalidate();
+                    if (!inCenter) {
+                        mListener.colorChanged(mCenterPaint.getColor());
+                    }
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if (mTrackingCenter) {
-                    if (inCenter) {
+                //if (mTrackingCenter) {
+                    if (!inCenter) {
                         mListener.colorChanged(mCenterPaint.getColor());
                     }
                     mTrackingCenter = false;    // so we draw w/o halo
                     invalidate();
-                }
+                //}
                 break;
         }
         return true;
