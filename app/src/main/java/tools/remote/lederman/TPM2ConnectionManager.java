@@ -48,4 +48,10 @@ public class TPM2ConnectionManager {
     public void setColor(int color){
         new SetColorTask(this.address).execute(color);
     }
+    public void setMode(int mode){
+        new SetModeTask(this.address).execute(mode);
+    }
+    public void sendKey(int key){
+        new SendKeyTask(this.address).execute(key);
+    }
 }

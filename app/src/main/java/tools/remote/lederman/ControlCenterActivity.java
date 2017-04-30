@@ -31,7 +31,7 @@ import java.net.MulticastSocket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-public class ControlCenterActivity extends AppCompatActivity implements OnColorChangedListener{
+public class ControlCenterActivity extends AppCompatActivity implements OnColorChangedListener, OnModeSelectListener{
 
     public static final String SERVER = "tools.remotelederman.SERVER";
     public static final String SERVER_KEY = "last_server";
@@ -145,6 +145,11 @@ public class ControlCenterActivity extends AppCompatActivity implements OnColorC
         TPM2ConnectionManager.getInstance().setColor(color);
     }
 
+    @Override
+    public void OnModeSelectListener(int mode) {
+        TPM2ConnectionManager.getInstance().setMode(mode);
+    }
+
 
     public class ControlCenterSectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -157,12 +162,19 @@ public class ControlCenterActivity extends AppCompatActivity implements OnColorC
 
         @Override
         public Fragment getItem(int position) {
-            return ColorPickerFragment.newInstance(this.activity);
+            if(position == 0) {
+                return ColorPickerFragment.newInstance();
+            } else if (position == 1) {
+                return ModeSelectFragment.newInstance();
+            } else if (position == 2) {
+                return  ArrowKeyFragment.newInstance();
+            }
+            return null;
         }
 
         @Override
         public int getCount() {
-            return 1;
+            return 3;
         }
 
         @Override

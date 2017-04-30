@@ -1,5 +1,6 @@
 package tools.remote.lederman;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,11 +26,8 @@ public class ColorPickerFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static ColorPickerFragment newInstance(OnColorChangedListener listener) {
+    public static ColorPickerFragment newInstance() {
         ColorPickerFragment fragment = new ColorPickerFragment();
-        fragment.mListener = listener;
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -40,5 +38,22 @@ public class ColorPickerFragment extends Fragment {
         ColorPickerView ColorPickerView = (ColorPickerView) rootView.findViewById(R.id.color_picker);
         ColorPickerView.setOnColorChangedListener(mListener);
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnColorChangedListener) {
+            mListener = (OnColorChangedListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnColorChangedListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 }

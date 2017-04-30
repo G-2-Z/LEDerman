@@ -1,0 +1,106 @@
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="tools.remote.lederman.ArrowKeyFragment">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/button_up"
+                    android:layout_width="40pt"
+                    android:layout_height="30pt"
+                    android:layout_weight="1"
+                    android:text="\u25b2" />
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10pt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_left"
+                    android:layout_width="40pt"
+                    android:layout_height="30pt"
+                    android:layout_weight="1"
+                    android:text="\u25C0" />
+
+                <Space
+                    android:layout_width="20pt"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/button_right"
+                    android:layout_width="40pt"
+                    android:layout_height="30pt"
+                    android:layout_weight="1"
+                    android:text="\u25B6" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10pt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/button_down"
+                    android:layout_width="40pt"
+                    android:layout_height="30pt"
+                    android:layout_weight="1"
+                    android:text="\u25BC" />
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
