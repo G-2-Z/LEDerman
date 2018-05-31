@@ -38,7 +38,7 @@ public class DeviceHeartbeatTask extends ErrorHandlingAsyncTask<SocketAddress, V
     protected Boolean tryInBackground(SocketAddress... params) throws Exception {
         //DatagramSocket socket = params[0];
         DatagramSocket socket = new DatagramSocket();
-        socket.setSoTimeout(5000);
+        socket.setSoTimeout(3000);
         socket.connect(params[0]);
         byte[] buff = {(byte)0xc9, (byte)0xc0, (byte)0x00, (byte)0x01, (byte)0xff, (byte)0x36};
         //if (!socket.isClosed() && socket.isConnected()){

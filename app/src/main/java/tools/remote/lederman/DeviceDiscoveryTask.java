@@ -2,6 +2,8 @@ package tools.remote.lederman;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.nsd.NsdManager;
+import android.net.nsd.NsdServiceInfo;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -19,9 +21,12 @@ import java.net.UnknownHostException;
 
 public class DeviceDiscoveryTask extends ErrorHandlingAsyncTask<Void, Void, String> {
 
-    public static final String SERVER = "tools.remotelederman.SERVER";
+    private static final String TAG = DeviceDiscoveryTask.class.toString();
+    public static final String SERVER = "tools.remote.lederman.SERVER";
+
     private Activity activity;
     private static final byte[] message = new byte[] { (byte)0x15, 0x1e, (byte)0xd2 };
+
 
     public DeviceDiscoveryTask(Activity activity){
         super();
@@ -71,5 +76,4 @@ public class DeviceDiscoveryTask extends ErrorHandlingAsyncTask<Void, Void, Stri
         s.close();
         return recv.getAddress().getHostAddress();
     }
-
 }

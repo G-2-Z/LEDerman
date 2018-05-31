@@ -22,7 +22,41 @@
             android:visibility="visible"
             app:innerRelativeRadius="0.3"
             app:outerRelativeRadius="0.45" />
+
+
+
+
     </RelativeLayout>
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20pt" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Brightness" />
+
+    <SeekBar
+        android:id="@+id/brightness_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.06" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20pt" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Saturation" />
+
+    <SeekBar
+        android:id="@+id/saturation_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.06" />
 </LinearLayout>
