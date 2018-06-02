@@ -14,7 +14,7 @@ import java.net.InetAddress;
 public class DeviceSelectActivity extends AppCompatActivity {
     private static final String TAG = DeviceSelectActivity.class.toString();
     public static final String SERVER = "tools.remote.lederman.SERVER";
-    private static final String SERVICE_TYPE = "_tpm2._udp";
+    private static final String SERVICE_TYPE = "_tpm2._udp.";
     private NsdManager.DiscoveryListener mDiscoveryListener;
     private NsdManager mNsdManager;
     private NsdManager.ResolveListener mResolveListener;

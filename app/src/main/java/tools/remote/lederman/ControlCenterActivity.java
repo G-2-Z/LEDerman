@@ -33,7 +33,7 @@ import java.net.UnknownHostException;
 
 public class ControlCenterActivity extends AppCompatActivity implements OnColorChangedListener, OnModeSelectListener{
 
-    public static final String SERVER = "tools.remotelederman.SERVER";
+    public static final String SERVER = "tools.remote.lederman.SERVER";
     public static final String SERVER_KEY = "last_server";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
